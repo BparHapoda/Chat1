@@ -32,7 +32,6 @@ public class ClientService extends Thread {
         try {
             while (true) {
                 String message = in.readUTF();
-                System.out.println(message);
                 server.messageForAll(message);
             }
         } catch (IOException e) {
@@ -68,9 +67,6 @@ public class ClientService extends Thread {
         }
     }
 
-    public int getClientId() {
-        return id;
-    }
 
     public void sendMessage(String message) {
         try {
@@ -81,49 +77,4 @@ public class ClientService extends Thread {
     }
 
 
-
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Socket getSocket() {
-        return socket;
-    }
-
-    public void setSocket(Socket socket) {
-        this.socket = socket;
-    }
-
-    public DataInputStream getIn() {
-        return in;
-    }
-
-    public void setIn(DataInputStream in) {
-        this.in = in;
-    }
-
-    public DataOutputStream getOut() {
-        return out;
-    }
-
-    public void setOut(DataOutputStream out) {
-        this.out = out;
-    }
-
-    public Server getServer() {
-        return server;
-    }
-
-    public void setServer(Server server) {
-        this.server = server;
-    }
-
-    public String getNick() {
-        return nick;
-    }
-
-    public void setNick(String nick) {
-        this.nick = nick;
-    }
 }

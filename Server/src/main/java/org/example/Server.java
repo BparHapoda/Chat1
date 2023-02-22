@@ -29,24 +29,7 @@ public class Server {
 
 
     }
-public void login(Socket socket){
-        try(DataInputStream inputStream=new DataInputStream(socket.getInputStream());
-        DataOutputStream outputStream=new DataOutputStream(socket.getOutputStream())){
-            String msg= inputStream.readUTF();
-            if(msg.startsWith("#login ")){String [] msgs=msg.split(" ");
-                ClientService clientService = new ClientService(socket, clients.size() + 1, msgs[1], this);
-                clients.add(clientService);
-                clientService.start();
-                System.out.println("Клиент " + msgs[1] + " подсоединился");
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
-}
-    public void addClient(ClientService clientService) {
-        clients.add(clientService);
-    }
 
     public void deleteClient(ClientService clientService) {
 
@@ -57,9 +40,7 @@ public void login(Socket socket){
         }
     }
 
-    public ArrayList<ClientService> getClients() {
-        return clients;
-    }
+
 
     public void messageForAll(String message) {
 
